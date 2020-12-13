@@ -125,7 +125,7 @@
                         <option value="spain">Spain</option>
                         <option value="france">France</option>
                         <option value="portugal">Portugal</option>
-                        <option value="portugal">UK</option>    
+                        <option value="uk">UK</option>    
                         <option value="italy">Italy</option>
                         <option value="germany">Germany</option>
                         </datalist>
