@@ -62,6 +62,7 @@
                     <h2>Pricing</h2>
                     <div class="flex-container" id="pricing">
                         <div class="pricing">
+                            <p><span class="winInverted">Win</span><span class="einverted"> e-</span><span class="listInverted">List<sup><small> &reg;</small></sup></span></p>
                             <h3>Free</h3>
                             <ul class="pricing-list">
                                 <li>1 Menu</li>
@@ -71,6 +72,7 @@
                             <p>0 <small><sup>€</sup>/<sub>Month</sub></small></p>
                         </div>
                         <div class="pricing">
+                            <p><span class="winInverted">Win</span><span class="einverted"> e-</span><span class="listInverted">List<sup><small> &reg;</small></sup></span></p>
                             <h3>Advanced</h3>
                             <ul class="pricing-list">
                                 <li>3 Menus</li>
@@ -80,6 +82,7 @@
                             <p>15 <small><sup>€</sup>/<sub>Month</sub></small></p>
                         </div>
                         <div class="pricing">
+                            <p><span class="winInverted">Win</span><span class="einverted"> e-</span><span class="listInverted">List<sup><small> &reg;</small></sup></span></p>
                             <h3>Pro</h3>
                             <ul class="pricing-list">
                                 <li>Unlimited Menus</li>
@@ -94,17 +97,17 @@
             </div>
         </div>     
         <div class="form-container" id="order-now">
-            <form id="form" method="post" action="getProductLanding.php">
-                <!--
-                action="<?php /*echo $_SERVER['PHP_SELF'];*/?>"
-                -->
+            <form id="form" action="getProductLanding.php" method="POST">
+            <!--
+            <form id="form" method="post" action="</*?php echo htmlspecialchars($_SERVER["PHP_SELF"]);*/?>">    
+            -->     
                 <div class="form-field">
                     <label class="label-block" id="name-label" for="name">Name</label>
-                    <input class="edit-input" id="name" type="text" name="name" maxlength="32" pattern="[a-zA-Z0-9\s]+" placeholder="Enter your name" required/>
+                    <input class="edit-input" id="name" type="text" name="name" maxlength="32" pattern="[a-zA-Z0-9\s\´]+" placeholder="Enter your name" required/>
                 </div>
                 <div class="form-field">
                     <label class="label-block" id="lname-label" for="lname">Last Name</label>
-                    <input class="edit-input" id="lname" type="text" name="lname" maxlength="32" pattern="[a-zA-Z0-9\s]+" placeholder="Enter your last name" required/>
+                    <input class="edit-input" id="lname" type="text" name="lname" maxlength="32" pattern="[a-zA-Z0-9\s\´]+" placeholder="Enter your last name" required/>
                 </div>
                 <div class="form-field">
                     <label class="label-block" id="e-mail" for="email">e-mail</label>
@@ -112,7 +115,7 @@
                 </div>   
                 <div class="form-field">
                     <label class="label-block" id="tel-label" for="tel">Phone Number</label>
-                    <input class="edit-input" id="tel" type="tel" name="tel" pattern="[0-9\s]+" placeholder="Enter your phone number" required/>
+                    <input class="edit-input" id="tel" type="tel" name="tel" pattern="[0-9\s\-\+]+" placeholder="Enter your phone number" required/>
                 </div>    
                 <div class="form-field">    
                     <label id="select-label" for="dropdown">Country</label>
@@ -122,7 +125,7 @@
                         <option value="spain">Spain</option>
                         <option value="france">France</option>
                         <option value="portugal">Portugal</option>
-                        <option value="uk">UK</option>    
+                        <option value="portugal">UK</option>    
                         <option value="italy">Italy</option>
                         <option value="germany">Germany</option>
                         </datalist>
@@ -131,9 +134,9 @@
                 <div class="form-field">  
                     <fieldset>
                         <legend>Choose your plan</legend>
-                        <p><label class="radio-label" for="radio1"><input id="radio1" type="radio" name="plan" value="free" checked/>Free</label></p>
-                        <p><label class="radio-label" for="radio2"><input id="radio2" type="radio" name="plan" value="advanced"/>Advanced</label></p>
-                        <p><label class="radio-label" for="radio3"><input id="radio3" type="radio" name="plan" value="pro"/>Pro</label></p>
+                        <p><label class="radio-label" for="radio1"><input id="radio1" type="radio" name="plan" value="Free" checked/>Free</label></p>
+                        <p><label class="radio-label" for="radio2"><input id="radio2" type="radio" name="plan" value="Advanced"/>Advanced</label></p>
+                        <p><label class="radio-label" for="radio3"><input id="radio3" type="radio" name="plan" value="Pro"/>Pro</label></p>
                     </fieldset>    
                 </div>   
                 <div class="form-field">  
@@ -146,9 +149,12 @@
                 </div> 
                 <div class="form-field">
                     <label class="label-block" id="card-label" for="card">Credit Card Number</label>
-                    <input class="edit-input" id="card" type="password" name="card-number" pattern="[0-9\s]+" placeholder="xxxx xxxx xxxx xxxx"/>
+                    <input class="edit-input" id="card" type="password" name="card-number" pattern="[0-9\s\-]+" placeholder="xxxx xxxx xxxx xxxx"/>
                 </div>   
                 <div class="form-field">
+                    <!--
+                    <input type="button" class="edit-input especial" id="cart" name="cart" value="Total" onclick="getVersion()">
+                    -->
                     <input class="edit-input especial" type="submit" id="submit" value="Submit"/>
                 </div>
             </form>
@@ -156,68 +162,13 @@
                 <div id="invoice">
                     <h3>Your Purchase</h3>
                     <h4><span class="winMiniLight">Win</span><span class="eMiniLight"> e-</span><span class="listMiniLight">List<sup><small> &reg;</small></sup></span> Version:</h4>
-                    <p id="purchase-choice">
-                        <?php
-                            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                // collect value of input field
-                                $version = htmlspecialchars($_POST['plan']);
-                                if (empty($version)) {
-                                    echo "Version is empty";
-                                } else {
-                                    echo $version;
-                                }
-                            }
-                        ?>
-                    </p>
+                    <p id="purchase-choice"></p>
                     <h4>Name:</h4>
-                    <p id="purchase-name">
-                        <?php
-                            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                // collect value of input field
-                                $name = htmlspecialchars($_POST['name']);
-                                if (empty($name)) {
-                                    echo "Name is empty";
-                                } else {
-                                    echo $name;
-                                }
-                            }
-                        ?>
-                    </p>
+                    <p id="purchase-name"></p>
                     <h4>Last Name:</h4>
-                    <p id="purchase-last-name">
-                        <?php
-                            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                // collect value of input field
-                                $lname = htmlspecialchars($_POST['lname']);
-                                if (empty($lname)) {
-                                    echo "Last name is empty";
-                                } else {
-                                    echo $lname;
-                                }
-                            }
-                        ?>
-                    </p>
+                    <p id="purchase-last-name"></p>
                     <h4>Total:</h4>
-                    <p id="purchase-total">
-                        <?php
-                            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                $plan = htmlspecialchars($_POST['plan']);
-
-                                if($plan == "free") {
-                                    echo 0 . " €";
-                                }
-                                else if($plan == "advanced") {
-                                    echo 15 . " €";
-                                }
-                                else if($plan == "pro") {
-                                    echo 22 . " €";
-                                }
-                                else {
-                                    echo "Please choose your plan";
-                                }
-                            }
-                        ?>
-                    </p>
+                    <p id="purchase-total"></p>
                 </div>
             </div>  
             <div class="contact">
@@ -233,7 +184,6 @@
                 </address>
             </div>  
         </div>
-        
         <footer class="footer">
             <nav id="nav-footer">
                 <img src="https://github.com/ggdmj23/productLandingPage/blob/master/wineListLogo.PNG?raw=true" id="footer-img"/>
@@ -247,9 +197,5 @@
             </nav>
         </footer>
     </div>    
-        
-<script src="productLanding.js">
-</script>
-        
 </body>
 </html>

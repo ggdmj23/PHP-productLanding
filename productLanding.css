@@ -104,6 +104,8 @@ body {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        background-color: #315481;
+        background-image: linear-gradient(to bottom, #315481, #918e82 100%);
 }
 
 #nav-bar li {
@@ -115,13 +117,13 @@ body {
     text-align: center;
     padding: 16px 16px;
     text-decoration: none;
-    color: #315481;
+    color: #d2edf4;
     font-size: 1em;
 }
 
 #nav-bar li a:hover {
     text-decoration: none;
-    color: black;
+    color: white;
     font-size: 1em;
 }
 }
@@ -137,15 +139,14 @@ h2 {
 .article-cont{
     width: 75%;
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 20px;   
 }
 
 @media screen and (max-width: 800px) {
     .article-cont{
         width: 100%;
-        margin-top: 70px;
+        margin-top: 90px;
         padding-top: 50px;
-      
         padding-bottom: 20px;
     }
 }
@@ -241,17 +242,38 @@ h2 {
     }
 }
 
-.price {
-    
+.winInverted {
+    font-size: 2em;
+    font-family: 'Satisfy', cursive, Verdana, sans-serif;
+    color: whitesmoke;
+    display: inline-block;
+    text-shadow: 4px 4px 5px whitesmoke;
+}
+
+.e-Inverted {
+    font-size: 1em;
+    font-family: 'Orbitron', sans-serif, Verdana, sans-serif;
+    margin-left: -5px;
+    color: black;
+    text-shadow: 4px 4px 5px whitesmoke;
+}
+
+.listInverted {
+    font-size: 1.2em;
+    font-family: 'Orbitron', sans-serif, Verdana, sans-serif;
+    color: whitesmoke;
+    text-shadow: 4px 4px 5px whitesmoke;
 }
 
 .pricing {
     height: 300px;
+    padding: 10px;
 }
 
 .pricing p {
     position: relative;
-    bottom: 10px;
+    bottom: 5px;
+    line-height: 0.1em;
 }
 
 .pricing-list {
@@ -308,7 +330,8 @@ h2 {
     border-radius: 5px;
     padding: 10px 0 10px;
     color: black;
-    height: 1620px;
+    min-height: 1400px;
+    max-height: 1800px;
 }
 
 @media screen and (max-width: 800px) {
@@ -330,6 +353,7 @@ h2 {
         border-radius: 5px;
         padding: 10px 0 10px;
         color: black;
+        min-height: 1400px;
         max-height: 1800px;
     }
 }
@@ -369,9 +393,14 @@ input {
     border-radius: 5px;  
 }
 
+fieldset p {
+    color: white;
+    line-height: 0.1em;
+}
+
 .especial {
     height: 40px;
-    width: 210px;
+    width: 100%;
 }
 
 /***********/
@@ -451,13 +480,27 @@ address a:hover {
     color: white;
 }
 
+#contact p {
+    color: white;
+    line-height: 0.1em;
+}
+
+#invoice h4 {
+}
+
+#invoice p {
+    text-indent: 20px;
+    color: white;
+    line-height: 0.1em;
+}
+
 /**********/
 /* FOOTER */
 /**********/
 
 .footer {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #nav-footer {

@@ -136,13 +136,13 @@
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $plan = htmlspecialchars($_POST['plan']);
 
-                        if($plan == "free") {
+                        if($plan == "Free") {
                             echo 0 . " €";
                         }
-                        else if($plan == "advanced") {
+                        else if($plan == "Advanced") {
                             echo 15 . " €";
                         }
-                        else if($plan == "pro") {
+                        else if($plan == "Pro") {
                             echo 22 . " €";
                         }
                         else {
@@ -154,7 +154,5 @@
         </div>
     </div>  
     
-<script>
-</script>
 </body>
 </html>
