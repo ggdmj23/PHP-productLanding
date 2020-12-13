@@ -17,7 +17,7 @@
 <body>
     <?php
     // define variables and set to empty values
-    $plan = $name = $lname = $email = $tel = $country = $credit_card = $card_number = "";
+    $plan = $name = $lname = $email = $tel = $country = $credit_card = $card_number = $cvv = $expiry_date = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $plan = test_input($_POST["plan"]);  
@@ -28,6 +28,8 @@
       $country = test_input($_POST["country"]);
       $credit_card = test_input($_POST["credit-card"]);
       $card_number = test_input($_POST["card-number"]);
+      $cvv = test_input($_POST["cvv"]);  
+      $expiry_date = test_input($_POST["expiry_date"]);    
     }
 
     function test_input($data) {
@@ -106,7 +108,7 @@
                 ?>
             </p>
             <h4>Credit Card:</h4>
-            <p id="purchase-country">
+            <p id="purchase-credit-card">
                 <?php
                     
                     if (empty($credit_card)) {
@@ -117,14 +119,38 @@
                     
                 ?>
             </p>
-            <h4>Credit Card:</h4>
-            <p id="purchase-country">
+            <h4>Credit Card Number:</h4>
+            <p id="purchase-card-number">
                 <?php
                     
                     if (empty($card_number)) {
                         echo "Credit card number is empty";
                     } else {
                         echo $card_number;
+                    }
+                    
+                ?>
+            </p>
+            <h4>CVV:</h4>
+            <p id="purchase-cvv">
+                <?php
+                    
+                    if (empty($cvv)) {
+                        echo "CVV is empty";
+                    } else {
+                        echo $cvv;
+                    }
+                    
+                ?>
+            </p>
+            <h4>Expiry Date:</h4>
+            <p id="purchase-expiry-date">
+                <?php
+                    
+                    if (empty($expiry_date)) {
+                        echo "Expiry date is empty";
+                    } else {
+                        echo $expiry_date;
                     }
                     
                 ?>
